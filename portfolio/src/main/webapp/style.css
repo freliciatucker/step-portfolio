@@ -1,4 +1,11 @@
 
+body {
+  background-image: url("images/track.jpg");
+  background-repeat: no-repeat;
+  background-position: right top;
+  margin-right: 200px;
+  background-attachment: fixed;
+}
 p {
   color:black;
   text-align: center;
@@ -37,22 +44,33 @@ h4 {
 #fact-container {
   margin-top: 20px;
 }
+#img1-container{
+    margin: auto;
+    margin-top: 20px;
+}
+
 img {
-  margin: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   min-height: 350px;
   min-height: 350px;
   max-height: 400px;
   max-width: 400px;
   justify-content: center;
+  align-content: center;
 }
 
 button {
+  margin: auto;
   background-color: red;
   border: black;
-  color: green;
+  color: black;
   padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
+  text-align: left;
   display: inline-block;
   font-size: 18px; 
+}
+#randomFact.html {
+    margin: auto;
 }
