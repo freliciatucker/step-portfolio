@@ -20,7 +20,6 @@ function addRandomFact() {
 * Opens picture up to text of the associated paragraph.
  */
 function openPicture(num){
-      
       // Each string corresponds to a picture.
       const captions= [' Welcome to my page! As you look around,' +
       'I hope you learn a bit more about me and enjoy some seeing' +
@@ -44,6 +43,4 @@ function openPicture(num){
    // Add string to the page.
    const hiddenPrint =  document.getElementById('img' + num + '-container');
    hiddenPrint.innerText = caption; 
-
-   return; 
  }
