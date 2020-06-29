@@ -60,6 +60,17 @@ function getRandomQuoteUsingArrowFunctions() {
     document.getElementById('quote-container').innerText = quote;
   });
 }
+/**
+ * The above code is organized to show each individual step, but we can use an
+ * ES6 feature called arrow functions to shorten the code. This function
+ * combines all of the above code into a single Promise chain. You can use
+ * whichever syntax makes the most sense to you.
+ */
+function getGreetingWithArrow() {
+  fetch('/data').then(response => response.text()).then((quote) => {
+    document.getElementById('greet-container').innerText = quote;
+  });
+}
 
 /**
  * Another way to use fetch is by using the async and await keywords. This
@@ -70,4 +81,40 @@ async function getRandomQuoteUsingAsyncAwait() {
   const response = await fetch('/random-quote');
   const quote = await response.text();
   document.getElementById('quote-container').innerText = quote;
+}
+/**
+ * Fetches the greeting from the server and adds it to the DOM.
+ */
+function getGreeting() {
+  console.log('Fetching a greeting.');
+
+  // The fetch() function returns a Promise because the request is asynchronous.
+  const responsePromise = fetch('/data');
+
+  // When the request is complete, pass the response into handleResponse().
+  responsePromise.then(handleGreeting);
+}
+
+/**
+ * Handles greeting by converting it to text and passing the result to
+ * addGreetingToDom().
+ */
+function handleGreeting(greeting) {
+  console.log('Handling the greeting.');
+
+  // response.text() returns a Promise, because the response is a stream of
+  // content and not a simple variable.
+  const textPromise = greeting.text();
+
+  // When the response is converted to text, pass the result into the
+  // addQuoteToDom() function.
+  textPromise.then(addGreetingToDom);
+}
+
+/** Adds a greeting to the DOM. */
+function addGreetingToDom(greeting) {
+  console.log('Adding quote to dom: ' + greeting);
+
+  const greetContainer = document.getElementById('greet-container');
+  greetContainer.innerText = greeting;
 }
