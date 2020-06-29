@@ -1,69 +1,63 @@
 
 body {
-  background-image: url("images/track.jpg");
-  background-repeat: no-repeat;
-  background-position: right top;
-  margin-right: 200px;
   background-attachment: fixed;
+  background-image: url("images/dickies.jpg");
+  background-position: right top;
+  background-repeat: no-repeat;
+  margin-right: 200px;
 }
 p {
-  color:black;
-  text-align: center;
+  color: black;
   font-size: 18px;
-}
-p rap {
- color:aqua;
   text-align: center;
-  font-size: 20px;
 }
+/* headers*/
 h1 {
     color: black;
-    text-decoration: firebrick;
-    text-align: center;
     font-size: 30px;
-}
-
-h2 {
-    color: red;
     text-align: center;
-    font-size: 24px;
 }
 
 h3 {
-    color: red;
-    text-align: center;
+    color: blue;
     font-size: 24px;
+    text-align: center;
 }
 
+h2,
 h4 {
     color: red;
-    text-align: center;
     font-size: 24px;
+    text-align: center;
 }
 
+/*containers*/
 #fact-container {
+  margin: auto;
   margin-top: 20px;
 }
+
 #img1-container{
     margin: auto;
     margin-top: 20px;
 }
 
+/*images not in buttons or in the background*/
 img {
+  align-content: center;
   display: block;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  min-height: 350px;
-  min-height: 350px;
   max-height: 400px;
   max-width: 400px;
-  justify-content: center;
-  align-content: center;
+  min-height: 350px;
+  min-width: 350px;
 }
 
 button {
   margin: auto;
-  background-color: red;
+  background-color: lightblue;
   border: black;
   color: black;
   padding: 15px 32px;
@@ -71,6 +65,7 @@ button {
   display: inline-block;
   font-size: 18px; 
 }
+
 #randomFact.html {
     margin: auto;
 }
