@@ -11,7 +11,7 @@ p {
   font-size: 18px;
   text-align: center;
 }
-/* headers*/
+/* Headers. */
 h1 {
     color: black;
     font-size: 30px;
@@ -31,7 +31,7 @@ h4 {
     text-align: center;
 }
 
-/*containers*/
+/* Containers. */
 #fact-container {
   margin: auto;
   margin-top: 20px;
@@ -42,7 +42,7 @@ h4 {
     margin-top: 20px;
 }
 
-/*images not in buttons or in the background*/
+/* Images not in buttons or in the background. */
 img {
   align-content: center;
   display: block;
