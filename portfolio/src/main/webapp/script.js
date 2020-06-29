@@ -43,7 +43,6 @@ function openPicture(num){
 
    // Add string to the page.
    const hiddenPrint =  document.getElementById('img' + num + '-container');
-   console.log(hisddenPrint);
    hiddenPrint.innerText = caption; 
 
    return; 
