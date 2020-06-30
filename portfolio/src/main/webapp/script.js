@@ -84,7 +84,6 @@ function addGreetingToDom(greeting) {
  */
 function getGreetingWithArrow() {
   fetch('/data').then(response => response.json()).then((quote) => {
-      console.log(quote);
     /**
     * this line of code is commented out because I may need it later.
     * TODO: Delete this comment or use line when final project is submitted
