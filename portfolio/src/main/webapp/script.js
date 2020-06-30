@@ -44,12 +44,11 @@ function openPictureText(num){
    const hiddenPrint =  document.getElementById('img' + num + '-container');
    hiddenPrint.innerText = caption; 
  }
+
  /**
  * Fetches the greeting from the server and adds it to the DOM.
  */
 function getGreeting() {
-  console.log('Fetching a greeting.');
-
   // The fetch() function returns a Promise because the request is asynchronous.
   const responsePromise = fetch('/data');
 
@@ -62,8 +61,6 @@ function getGreeting() {
  * addGreetingToDom().
  */
 function handleGreeting(greeting) {
-  console.log('Handling the greeting.');
-
   // response.text() returns a Promise, because the response is a stream of
   // content and not a simple variable.
   const textPromise = greeting.text();
@@ -75,11 +72,10 @@ function handleGreeting(greeting) {
 
 /** Adds a greeting to the DOM. */
 function addGreetingToDom(greeting) {
-  console.log('Adding quote to dom: ' + greeting);
-
   const greetContainer = document.getElementById('greet-container');
   greetContainer.innerText = greeting;
 }
+
 /**
  * The above code is organized to show each individual step, but we can use an
  * ES6 feature called arrow functions to shorten the code. This function
@@ -87,7 +83,26 @@ function addGreetingToDom(greeting) {
  * whichever syntax makes the most sense to you.
  */
 function getGreetingWithArrow() {
-  fetch('/data').then(response => response.text()).then((quote) => {
-    document.getElementById('greet-container').innerText = quote;
+  fetch('/data').then(response => response.json()).then((quote) => {
+      console.log(quote);
+    /**
+    * this line of code is commented out because I may need it later.
+    * TODO: Delete this comment or use line when final project is submitted
+    *document.getElementById('greet-container').innerText = quote;
+    */
   });
 }
+
+/**
+* Copied from tutorial and not used yet, TODO : figure out what to do with it
+ */
+function parseJson(){
+    fetch('/my-data-url')  // sends a request to /my-data-url
+.then(response => response.json()) // parses the response as JSON
+.then((myObject) => { // now we can reference the fields in myObject!
+  console.log(myObject.x);
+  console.log(myObject.y);
+  console.log(myObject.z);
+});
+}
+
