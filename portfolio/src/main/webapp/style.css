@@ -1,9 +1,71 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+
+body {
+  background-attachment: fixed;
+  background-image: url("images/dickies.jpg");
+  background-position: right top;
+  background-repeat: no-repeat;
+  margin-right: 200px;
+}
+p {
+  color: black;
+  font-size: 18px;
+  text-align: center;
+}
+/* Headers. */
+h1 {
+    color: black;
+    font-size: 30px;
+    text-align: center;
 }
 
-#greeting-container {
+h3 {
+    color: blue;
+    font-size: 24px;
+    text-align: center;
+}
+
+h2,
+h4 {
+    color: red;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Containers. */
+#fact-container {
+  margin: auto;
   margin-top: 20px;
+}
+
+#img1-container{
+    margin: auto;
+    margin-top: 20px;
+}
+
+/* Images not in buttons or in the background. */
+img {
+  align-content: center;
+  display: block;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 400px;
+  max-width: 400px;
+  min-height: 350px;
+  min-width: 350px;
+}
+
+button {
+  margin: auto;
+  background-color: lightblue;
+  border: black;
+  color: black;
+  padding: 15px 32px;
+  text-align: left;
+  display: inline-block;
+  font-size: 18px; 
+}
+
+#randomFact.html {
+    margin: auto;
 }
