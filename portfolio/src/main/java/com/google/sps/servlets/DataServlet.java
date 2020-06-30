@@ -19,8 +19,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*; 
-import java.util.*;
+import java.util.ArrayList;
+
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -28,9 +28,9 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     ArrayList<String> list= new ArrayList<String>(3);
-    list.add(0,"1");
-    list.add(1,"2");
-    list.add(2,"3");
+    list.add("1");
+    list.add("2");
+    list.add("3");
     String json = convertToJson(list);
     response.setContentType("application/json;");
     response.getWriter().println(json);
@@ -40,11 +40,12 @@ public class DataServlet extends HttpServlet {
    * Converts ArrayList<String> list into a JSON string using a for loop String concatentation.
    */
   private String convertToJson(ArrayList<String> list) {
-    String json = "{";
+    StringBuilder toConvert = new StringBuilder();
+    toConvert.append("{");
      for (int i=0; i<list.size()-1; i++){
-         json += list.get(i) + ", ";
+         toConvert.append(list.get(i) + ", ");
      } 
-    json += list.get(list.size()-1) + "}";
-    return json;
+    toConvert.append(list.get(list.size()-1) + "}");
+    return toConvert.toString();
   }
 }
