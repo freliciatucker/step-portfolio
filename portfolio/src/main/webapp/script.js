@@ -79,29 +79,13 @@ function addGreetingToDom(greeting) {
 /**
  * The above code is organized to show each individual step, but we can use an
  * ES6 feature called arrow functions to shorten the code. This function
- * combines all of the above code into a single Promise chain. You can use
- * whichever syntax makes the most sense to you.
+ * combines all of the above code into a single Promise chain. I can use
+ * whichever syntax makes the most sense to me. 
  */
 function getGreetingWithArrow() {
   fetch('/data').then(response => response.json()).then((quote) => {
-    /**
-    * this line of code is commented out because I may need it later.
-    * TODO: Delete this comment or use line when final project is submitted
-    *document.getElementById('greet-container').innerText = quote;
-    */
+    document.getElementById('greet-container').innerText = quote;
   });
 }
 
-/**
-* Copied from tutorial and not used yet, TODO : figure out what to do with it
- */
-function parseJson(){
-    fetch('/my-data-url')  // sends a request to /my-data-url
-.then(response => response.json()) // parses the response as JSON
-.then((myObject) => { // now we can reference the fields in myObject!
-  console.log(myObject.x);
-  console.log(myObject.y);
-  console.log(myObject.z);
-});
-}
 
