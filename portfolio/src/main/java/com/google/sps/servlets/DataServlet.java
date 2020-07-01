@@ -14,9 +14,12 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,8 +67,13 @@ public class DataServlet extends HttpServlet {
     response.setContentType("text/html;");
     response.getWriter().println(text);
 
-    // Redirects back to index url. 
-    // response.sendRedirect("/index.html");
+    Entity commentEntity = new Entity("comment");
+    commentEntity.setProperty("name", getParameter(request, "text-input", ""));
+    commentEntity.setProperty("ice Cream", iceCream);
+    commentEntity.setProperty("pizza", pizza);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
   }
 
   /**
