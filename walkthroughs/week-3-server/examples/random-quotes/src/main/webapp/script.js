@@ -82,6 +82,7 @@ async function getRandomQuoteUsingAsyncAwait() {
   const quote = await response.text();
   document.getElementById('quote-container').innerText = quote;
 }
+
 /**
  * Fetches the greeting from the server and adds it to the DOM.
  */
