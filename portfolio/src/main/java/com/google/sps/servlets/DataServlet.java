@@ -37,9 +37,13 @@ public class DataServlet extends HttpServlet {
   }
 
   /**
-   * Converts ArrayList<String> list into a JSON string using a for loop String concatentation.
+   * Converts ArrayList<String> list into a JSON string
    */
   private String convertToJson(ArrayList<String> list) {
+    // empty list case
+    if (list.size()==0)
+    return "empty list.";
+
     StringBuilder toConvert = new StringBuilder();
     toConvert.append("{");
      for (int i=0; i<list.size()-1; i++){
