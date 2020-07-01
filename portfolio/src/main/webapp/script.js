@@ -98,28 +98,20 @@ function getGreetingWithArrow() {
  * Fetches the current state of the form and builds the UI.
  */
 function getForm() {
-    console.log("in getform;");
   const responsePromise = fetch('/data').then(handleForm);
 }
 
 /**
- * Handles greeting by converting it to text and passing the result to
- * addGreetingToDom().
+ * Handles form by converting it to text and passing the result to
+ * addFormToDom().
  */
 function handleForm(form) {
-  // response.text() returns a Promise, because the response is a stream of
-  // content and not a simple variable.
-   console.log("handling");
   const textPromise = form.text().then(addResponseToDom)
-
-  // When the response is converted to text, pass the result into the
-  // addQuoteToDom() function.
 }
 
-/** Adds a greeting to the DOM. */
+/** Adds a form to the DOM. */
 function addResponseToDom(form) {
-     console.log("sending to dom")
-  const formContainer = document.getElementById('greet-container');
+  const formContainer = document.getElementById('form-container');
   formContainer.innerText = form;
 }
 
