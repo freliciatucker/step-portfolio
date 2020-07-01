@@ -50,6 +50,14 @@ public class DataServlet extends HttpServlet {
     boolean iceCream = Boolean.parseBoolean(getParameter(request, "ice-cream", "false"));
     boolean pizza = Boolean.parseBoolean(getParameter(request, "pizza", "false"));
 
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("name", getParameter(request, "text-input", ""));
+    commentEntity.setProperty("iceCream", iceCream);
+    commentEntity.setProperty("pizza", pizza);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+     datastore.put(commentEntity);
+
     // If applies, add ice cream comment.
     if (iceCream) {
       text += " I like ice cream too!";
