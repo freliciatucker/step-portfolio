@@ -93,16 +93,33 @@ function getGreetingWithArrow() {
   });
 }
 
+
 /**
-* Copied from tutorial and not used yet, TODO : figure out what to do with it
+ * Fetches the current state of the form and builds the UI.
  */
-function parseJson(){
-    fetch('/my-data-url')  // sends a request to /my-data-url
-.then(response => response.json()) // parses the response as JSON
-.then((myObject) => { // now we can reference the fields in myObject!
-  console.log(myObject.x);
-  console.log(myObject.y);
-  console.log(myObject.z);
-});
+function getForm() {
+    console.log("in getform;");
+  const responsePromise = fetch('/data').then(handleForm);
+}
+
+/**
+ * Handles greeting by converting it to text and passing the result to
+ * addGreetingToDom().
+ */
+function handleForm(form) {
+  // response.text() returns a Promise, because the response is a stream of
+  // content and not a simple variable.
+   console.log("handling");
+  const textPromise = form.text().then(addResponseToDom)
+
+  // When the response is converted to text, pass the result into the
+  // addQuoteToDom() function.
+}
+
+/** Adds a greeting to the DOM. */
+function addResponseToDom(form) {
+     console.log("sending to dom")
+  const formContainer = document.getElementById('greet-container');
+  formContainer.innerText = form;
 }
 

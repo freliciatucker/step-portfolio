@@ -19,14 +19,76 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+    private ArrayList<String> list= new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
-    response.getWriter().println("Hello Frelicia! How are you?");
+   
+    list.add("1");
+    list.add("2");
+    list.add("3");
+    String json = convertToJson();
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
+
+  /** Servlet that processes text. */
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String text = "Hi, " + getParameter(request, "text-input", "") + "!";
+    boolean iceCream = Boolean.parseBoolean(getParameter(request, "ice-cream", "false"));
+    boolean pizza = Boolean.parseBoolean(getParameter(request, "pizza", "false"));
+
+    // If applies, add ice cream comment.
+    if (iceCream) {
+      text += " I like ice cream too!";
+    }
+
+    // If applies, add pizza comment.
+    if (pizza) {
+      text += " Pizza is the best <3.";
+    }
+
+    // Respond with the result.
+    response.setContentType("text/html;");
+    response.getWriter().println(text);
+
+  }
+
+  /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
+  }
+
+  /**
+   * Converts ArrayList<String> list into a JSON string
+   */
+  private String convertToJson() {
+    // empty list case
+    if (list.size()==0)
+    return "empty list.";
+
+    StringBuilder toConvert = new StringBuilder();
+    toConvert.append("{");
+     for (int i=0; i<list.size()-1; i++){
+         toConvert.append(list.get(i) + ", ");
+    } 
+
+    toConvert.append(list.get(list.size()-1) + "}");
+    return toConvert.toString();
   }
 }
