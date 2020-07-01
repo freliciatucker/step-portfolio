@@ -72,13 +72,11 @@ public class DataServlet extends HttpServlet {
     response.setContentType("text/html;");
     response.getWriter().println(text);
 
-    // Redirects back to index url. 
-    // response.sendRedirect("/index.html");
   }
 
   /**
    * @return the request parameter, or the default value if the parameter
-   *         was not specified by the client
+   *         was not specified by the client.
    */
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
@@ -89,7 +87,7 @@ public class DataServlet extends HttpServlet {
   }
 
   /**
-   * Converts ArrayList<String> list into a JSON string
+   * Converts ArrayList<String> list into a JSON string.
    */
   private String convertToJson() {
     // empty list case
