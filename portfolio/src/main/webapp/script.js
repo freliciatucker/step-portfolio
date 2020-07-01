@@ -87,5 +87,3 @@ function getGreetingWithArrow() {
     document.getElementById('greet-container').innerText = quote;
   });
 }
-
-
