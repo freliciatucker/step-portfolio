@@ -87,3 +87,26 @@ function getGreetingWithArrow() {
     document.getElementById('greet-container').innerText = quote;
   });
 }
+
+
+/**
+ * Fetches the current state of the form and builds the UI.
+ */
+function getForm() {
+  const responsePromise = fetch('/data').then(handleForm);
+}
+
+/**
+ * Handles form by converting it to text and passing the result to
+ * addFormToDom().
+ */
+function handleForm(form) {
+  const textPromise = form.text().then(addResponseToDom)
+}
+
+/** Adds a form to the DOM. */
+function addResponseToDom(form) {
+  const formContainer = document.getElementById('form-container');
+  formContainer.innerText = form;
+}
+
