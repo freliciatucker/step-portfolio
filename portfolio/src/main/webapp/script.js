@@ -20,7 +20,6 @@ function addRandomFact() {
 * Opens picture up to text of the associated paragraph.
  */
 function openPictureText(num){
-
       // Each string corresponds to a picture.
       const captions= [' Welcome to my page! As you look around,' +
       'I hope you learn a bit more about me and enjoy some seeing' +
@@ -45,3 +44,74 @@ function openPictureText(num){
    const hiddenPrint =  document.getElementById('img' + num + '-container');
    hiddenPrint.innerText = caption; 
  }
+
+ /**
+ * Fetches the greeting from the server and adds it to the DOM.
+ */
+function getGreeting() {
+  // The fetch() function returns a Promise because the request is asynchronous.
+  const responsePromise = fetch('/data');
+
+  // When the request is complete, pass the response into handleResponse().
+  responsePromise.then(handleGreeting);
+}
+
+/**
+ * Handles greeting by converting it to text and passing the result to
+ * addGreetingToDom().
+ */
+function handleGreeting(greeting) {
+  // response.text() returns a Promise, because the response is a stream of
+  // content and not a simple variable.
+  const textPromise = greeting.text();
+
+  // When the response is converted to text, pass the result into the
+  // addQuoteToDom() function.
+  textPromise.then(addGreetingToDom);
+}
+
+/** Adds a greeting to the DOM. */
+function addGreetingToDom(greeting) {
+  const greetContainer = document.getElementById('greet-container');
+  greetContainer.innerText = greeting;
+}
+
+/**
+ * The above code is organized to show each individual step, but we can use an
+ * ES6 feature called arrow functions to shorten the code. This function
+ * combines all of the above code into a single Promise chain. You can use
+ * whichever syntax makes the most sense to you.
+ */
+function getGreetingWithArrow() {
+  fetch('/data').then(response => response.json()).then((quote) => {
+      console.log(quote);
+    /**
+    * this line of code is commented out because I may need it later.
+    * TODO: Delete this comment or use line when final project is submitted
+    *document.getElementById('greet-container').innerText = quote;
+    */
+  });
+}
+
+
+/**
+ * Fetches the current state of the form and builds the UI.
+ */
+function getForm() {
+  const responsePromise = fetch('/data').then(handleForm);
+}
+
+/**
+ * Handles form by converting it to text and passing the result to
+ * addFormToDom().
+ */
+function handleForm(form) {
+  const textPromise = form.text().then(addResponseToDom)
+}
+
+/** Adds a form to the DOM. */
+function addResponseToDom(form) {
+  const formContainer = document.getElementById('form-container');
+  formContainer.innerText = form;
+}
+

@@ -6,10 +6,31 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head> 
-  <body>
+  <body onload="getForm()">
     <div id="content">
 
     <h1>Frelicia Tucker's Portfolio</h1>
+        <p>Submit below to see your greeting</p>
+        <p id= "form-container"></p>
+       
+    <form action="/data" method="POST">
+
+      <p>Enter your name here</p>
+      <textarea name="text-input">[your name]</textarea>
+      <br/><br/>
+
+      <p>Choose some options:</p>
+      <input type="checkbox" name="ice-cream" value="true"> Like Ice Cream?
+      <br/>
+      <input type="checkbox" name="pizza" value="true"> What about pizza?
+      <br/><br/>
+
+      <input type="submit" />
+    </form>
+
+      <button onclick="getGreetingWithArrow()">Fetch a greeting!</button>
+      <div id="greet-container"></div>
+
     
     <button onclick="openPictureText(0)"><img src="images/freliciaface.jpg" alt="Frelicia's headshot"/></button>
     <div id="img0-container"></div>
@@ -37,7 +58,6 @@
     <div id="img2-container"></div>
 
     <button onclick="openPictureText(3)"><img src="images/dad.jpg" alt="Frelicia's dad"/></button>
-
     <div id="img3-container"></div>
        
     <img src="images/track.jpg" alt="funny track photo"/>
@@ -54,7 +74,7 @@
             <li>Building my own Shell</li>
             <li>Buffer Overflow</li>
             <li>DFA Extraganzas</li>
-            <li>so many more</li>
+            <li>so many more!</li>
         </ul>
          
         <p>You can check out some of my COS work on my 

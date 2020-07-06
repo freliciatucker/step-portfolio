@@ -11,6 +11,9 @@ p {
   font-size: 18px;
   text-align: center;
 }
+form {
+    text-align: center;
+}
 /* Headers. */
 h1 {
     color: black;
@@ -66,6 +69,9 @@ button {
   font-size: 18px; 
 }
 
+.options {
+    text-align: center;
+}
 #randomFact.html {
     margin: auto;
 }
