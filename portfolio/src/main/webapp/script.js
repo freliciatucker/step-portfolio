@@ -94,15 +94,23 @@ function getGreetingWithArrow() {
 }
 
 /**
-* Copied from tutorial and not used yet, TODO : figure out what to do with it
+ * Fetches the current state of the form and builds the UI.
  */
-function parseJson(){
-    fetch('/my-data-url')  // sends a request to /my-data-url
-.then(response => response.json()) // parses the response as JSON
-.then((myObject) => { // now we can reference the fields in myObject!
-  console.log(myObject.x);
-  console.log(myObject.y);
-  console.log(myObject.z);
-});
+function getForm() {
+  const responsePromise = fetch('/data').then(handleForm);
+}
+
+/**
+ * Handles form by converting it to text and passing the result to
+ * addFormToDom().
+ */
+function handleForm(form) {
+  const textPromise = form.text().then(addResponseToDom)
+}
+
+/** Adds a form to the DOM. */
+function addResponseToDom(form) {
+  const formContainer = document.getElementById('form-container');
+  formContainer.innerText = form;
 }
 

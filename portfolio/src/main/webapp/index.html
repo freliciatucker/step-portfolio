@@ -6,11 +6,29 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head> 
-  <body>
+  <body onload="getForm()">
     <div id="content">
 
     <h1>Frelicia Tucker's Portfolio</h1>
-        <p>Click here to see a my greeting:</p>
+
+        <p>Submit below to see your greeting</p>
+        <p id= "form-container"></p>
+       
+    <form action="/data" method="POST">
+
+      <p>Enter your name here</p>
+      <textarea name="text-input">[your name]</textarea>
+      <br/><br/>
+
+      <p>Choose some options:</p>
+      <input type="checkbox" name="ice-cream" value="true"> Like Ice Cream?
+      <br/>
+      <input type="checkbox" name="pizza" value="true"> What about pizza?
+      <br/><br/>
+
+      <input type="submit" />
+    </form>
+
       <button onclick="getGreetingWithArrow()">Fetch a greeting!</button>
       <div id="greet-container"></div>
 
