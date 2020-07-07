@@ -17,9 +17,10 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import java.util.LinkedHashMap;
+import java.util.Scanner;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +32,7 @@ import java.util.List;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    private List<String> list= new ArrayList<String>();
+    private List<String> commenters= new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -74,12 +75,10 @@ public class DataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
 
-    Query query = new Query("comment");
-
     String name = (String) commentEntity.getProperty("name");
 
-    String entry = list.size() + ". " + "name: " + name + ". ice cream and pizza: " + iceCream + " and " + pizza + "\n";
-    list.add(entry);
+    String entry = commenters.size() + ". " + "name: " + name + ". ice cream and pizza: " + iceCream + " and " + pizza + "\n";
+    commenters.add(entry);
 
     // Redirects back to index url. 
     response.sendRedirect("/index.html");
@@ -98,21 +97,21 @@ public class DataServlet extends HttpServlet {
   }
 
   /**
-   * Converts ArrayList<String> list into a JSON string
+   * Converts ArrayList<String> commenters into a JSON string
    */
   private String convertToJson() {
-    // empty list case
-    if (list.isEmpty()){
+    // empty commenters case
+    if (commenters.isEmpty()){
       return "{}";
     }
 
     StringBuilder toConvert = new StringBuilder();
 
     toConvert.append("{");
-    for (int i = 0; i < list.size() - 1; i++){
-         toConvert.append(list.get(i));
+    for (int i = 0; i < commenters.size() - 1; i++){
+         toConvert.append(commenters.get(i));
     } 
-    toConvert.append(list.get(list.size()-1) + "}");
+    toConvert.append(commenters.get(commenters.size()-1) + "}");
     
     return toConvert.toString();
   }
