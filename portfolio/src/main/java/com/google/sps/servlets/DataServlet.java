@@ -75,14 +75,11 @@ public class DataServlet extends HttpServlet {
     datastore.put(commentEntity);
 
     Query query = new Query("comment");
-    PreparedQuery results = datastore.prepare(query);
 
-      String name = (String) commentEntity.getProperty("name");
-      boolean checkIce= (boolean) commentEntity.getProperty("ice Cream");
-      boolean checkPizza = (boolean) commentEntity.getProperty("pizza");
+    String name = (String) commentEntity.getProperty("name");
 
-      String entry = list.size() + ". " + "name: " + name + ". ice cream and pizza: " + checkIce + " and " + checkPizza + "\n";
-      list.add(entry);
+    String entry = list.size() + ". " + "name: " + name + ". ice cream and pizza: " + iceCream + " and " + pizza + "\n";
+    list.add(entry);
 
     // Redirects back to index url. 
     response.sendRedirect("/index.html");
@@ -105,17 +102,18 @@ public class DataServlet extends HttpServlet {
    */
   private String convertToJson() {
     // empty list case
-    if (list.size() == 0){
+    if (list.isEmpty()){
       return "{}";
     }
 
     StringBuilder toConvert = new StringBuilder();
-    toConvert.append("{");
-     for (int i = 0; i < list.size() - 1; i ++){
-         toConvert.append(list.get(i));
-             } 
 
+    toConvert.append("{");
+    for (int i = 0; i < list.size() - 1; i++){
+         toConvert.append(list.get(i));
+    } 
     toConvert.append(list.get(list.size()-1) + "}");
+    
     return toConvert.toString();
   }
 
