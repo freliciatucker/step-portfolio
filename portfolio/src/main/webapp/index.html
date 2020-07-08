@@ -3,12 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <title>Frelicia's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
      <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu5xY7doZ9aQJCtbNxztqvRxFub2i1rzU&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+     <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="./app.js"></script>
+    
   </head> 
-  <body onload="getForm()">
+  <body onload="getForm()" onload="initMap();">
     <div id="content">
 
     <h1>Frelicia Tucker's Portfolio</h1>
@@ -83,13 +92,15 @@
             LinkedIn page</a> to research other things 
             I'm doing to grow professionally</p>
 
-        <h4> Fun Facts! </h4>
-          <p>Click below to learn a random fact about me!</p>
-          <button><a href="randomFact.html">Click Me!</a></button>
+    <h4> Fun Facts! </h4>
+       <p>Click below to learn a random fact about me!</p>
+       <button><a href="randomFact.html">Click Me!</a></button>
 
-        <h5>Here's a chart showing some cool stuff</h5>
-        <div id="chart-container"></div>
+    <h5>Here's a chart showing some cool stuff</h5>
+       <div id="chart-container"></div>
           
+    <h6>Let me show you a map!</h6> 
+       <div id="map"></div> 
     </div>
   </body>
   
