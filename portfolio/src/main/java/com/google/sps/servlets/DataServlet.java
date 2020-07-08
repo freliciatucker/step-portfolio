@@ -13,10 +13,10 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
- 
-import com.google.appengine.api.datastore.Entity;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,6 +50,15 @@ public class DataServlet extends HttpServlet {
     boolean iceCream = Boolean.parseBoolean(getParameter(request, "ice-cream", "false"));
     boolean pizza = Boolean.parseBoolean(getParameter(request, "pizza", "false"));
 
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("name", getParameter(request, "text-input", ""));
+    commentEntity.setProperty("iceCream", iceCream);
+    commentEntity.setProperty("pizza", pizza);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+     datastore.put(commentEntity);
+
+
     // If applies, add ice cream comment.
     if (iceCream) {
       text += " I like ice cream too!";
@@ -64,18 +73,10 @@ public class DataServlet extends HttpServlet {
     response.setContentType("text/html;");
     response.getWriter().println(text);
 
-    Entity commentEntity = new Entity("comment");
-    commentEntity.setProperty("name", getParameter(request, "text-input", ""));
-    commentEntity.setProperty("ice Cream", iceCream);
-    commentEntity.setProperty("pizza", pizza);
-
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(commentEntity);
   }
 
   /**
    * @return the request parameter, or the default value if the parameter
-   *         was not specified by the client
    */
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
@@ -86,7 +87,7 @@ public class DataServlet extends HttpServlet {
   }
 
   /**
-   * Converts ArrayList<String> list into a JSON string
+   * Converts ArrayList<String> list into a JSON string.
    */
   private String convertToJson() {
     // empty list case
