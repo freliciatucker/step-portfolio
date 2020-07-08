@@ -14,13 +14,9 @@
 
 package com.google.sps.servlets;
 
-import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Query.SortDirection;
-import java.util.LinkedHashMap;
-import java.util.Scanner;
+import com.google.appengine.api.datastore.Entity;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,6 +47,15 @@ public class DataServlet extends HttpServlet {
     String text = "Hi, " + getParameter(request, "text-input", "") + "!";
     boolean iceCream = Boolean.parseBoolean(getParameter(request, "ice-cream", "false"));
     boolean pizza = Boolean.parseBoolean(getParameter(request, "pizza", "false"));
+
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("name", getParameter(request, "text-input", ""));
+    commentEntity.setProperty("iceCream", iceCream);
+    commentEntity.setProperty("pizza", pizza);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+     datastore.put(commentEntity);
+
 
     // If applies, add ice cream comment.
     if (iceCream) {
@@ -86,7 +91,6 @@ public class DataServlet extends HttpServlet {
 
   /**
    * @return the request parameter, or the default value if the parameter
-   *         was not specified by the client
    */
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
