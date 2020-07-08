@@ -23,19 +23,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.List;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    private ArrayList<String> list= new ArrayList<String>();
+    private List<String> commenters= new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
-   
-    list.add("1");
-    list.add("2");
-    list.add("3");
+
     String json = convertToJson();
     response.setContentType("application/json;");
     response.getWriter().println(json);
@@ -73,7 +71,23 @@ public class DataServlet extends HttpServlet {
     response.setContentType("text/html;");
     response.getWriter().println(text);
 
-  }
+
+    Entity commentEntity = new Entity("comment");
+    commentEntity.setProperty("name", getParameter(request, "text-input", ""));
+    commentEntity.setProperty("ice Cream", iceCream);
+    commentEntity.setProperty("pizza", pizza);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
+
+    String name = (String) commentEntity.getProperty("name");
+
+    String entry = commenters.size() + ". " + "name: " + name + ". ice cream and pizza: " + iceCream + " and " + pizza + "\n";
+    commenters.add(entry);
+
+    // Redirects back to index url. 
+    response.sendRedirect("/index.html");
+}
 
   /**
    * @return the request parameter, or the default value if the parameter
@@ -87,20 +101,23 @@ public class DataServlet extends HttpServlet {
   }
 
   /**
-   * Converts ArrayList<String> list into a JSON string.
+   * Converts ArrayList<String> commenters into a JSON string
    */
   private String convertToJson() {
-    // empty list case
-    if (list.size()==0)
-    return "empty list.";
+    // empty commenters case
+    if (commenters.isEmpty()){
+      return "{}";
+    }
 
     StringBuilder toConvert = new StringBuilder();
-    toConvert.append("{");
-     for (int i=0; i<list.size()-1; i++){
-         toConvert.append(list.get(i) + ", ");
-    } 
 
-    toConvert.append(list.get(list.size()-1) + "}");
+    toConvert.append("{");
+    for (int i = 0; i < commenters.size() - 1; i++){
+         toConvert.append(commenters.get(i));
+    } 
+    toConvert.append(commenters.get(commenters.size()-1) + "}");
+    
     return toConvert.toString();
   }
+
 }
