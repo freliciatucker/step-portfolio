@@ -1,35 +1,38 @@
 // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', {'packages':['corechart']});
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(drawChart);
 
-      // Callback that creates and populates a data table,
-      // instantiates the bar chart, passes in the data and
-      // draws it.
-      function drawChart() {
+/* Callback that creates and populates a data table,
+* instantiates the bar chart, passes in the data and
+* draws it. 
+*/
+function drawChart() {
+    // Create the data table.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Sport');
+    data.addColumn('number', 'Years');
+    data.addRows([
+      ['Tennis', 14],
+      ['Track', 13],
+      ['Cheerleading', 18],
+      ['Skating', 16],
+      ['Boxing', 2]
+    ]);
 
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Sport');
-        data.addColumn('number', 'Years');
-        data.addRows([
-          ['Tennis', 14],
-          ['Track', 13],
-          ['Cheerleading', 18],
-          ['Skating', 16],
-          ['Boxing', 2]
-        ]);
+    // Set chart options
+    var options = {'title':'Number of Years I Played a Sport',
+      'width':500,
+      'height':300
+    };
 
-        // Set chart options
-        var options = {'title':'Number of Years I Played a Sport',
-                       'width':500,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.BarChart(document.getElementById('chart-container'));
-        chart.draw(data, options);
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.BarChart(
+      document.getElementById('chart-container'));
+      chart.draw(data, options);
       }
+
 /**
  * Adds a random fact to the page.
  */
