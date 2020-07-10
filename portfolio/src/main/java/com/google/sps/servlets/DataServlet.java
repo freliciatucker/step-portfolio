@@ -48,7 +48,6 @@ public class DataServlet extends HttpServlet {
     boolean iceCream = Boolean.parseBoolean(getParameter(request, "ice-cream", "false"));
     boolean pizza = Boolean.parseBoolean(getParameter(request, "pizza", "false"));
 
-
     // If applies, add ice cream comment.
     if (iceCream) {
       text += " I like ice cream too!";

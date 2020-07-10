@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Frelicia's Portfolio</title>
     <link rel="stylesheet" href="style.css">
+     <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
   </head> 
   <body onload="getForm()">
@@ -12,8 +14,8 @@
     <h1>Frelicia Tucker's Portfolio</h1>
         <p>Submit below to see your greeting</p>
         <p id= "form-container"></p>
-       
-    <form action="/data" method="POST">
+    
+    <form action="/data" method="POST" Parameter-name= "form1">
 
       <p>Enter your name here</p>
       <textarea name="text-input">[your name]</textarea>
@@ -84,7 +86,10 @@
         <h4> Fun Facts! </h4>
           <p>Click below to learn a random fact about me!</p>
           <button><a href="randomFact.html">Click Me!</a></button>
-       
+
+        <h5>Here's a chart showing some cool stuff</h5>
+        <div id="chart-container"></div>
+
     </div>
   </body>
   
