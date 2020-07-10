@@ -75,3 +75,9 @@ button {
 #randomFact.html {
     margin: auto;
 }
+
+ #map {
+     overflow: visible;
+     z-index: 10;
+     position: relative;
+ }
