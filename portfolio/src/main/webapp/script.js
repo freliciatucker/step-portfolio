@@ -148,4 +148,3 @@ function addResponseToDom(form) {
   const formContainer = document.getElementById('form-container');
   formContainer.innerText = form;
 }
-
