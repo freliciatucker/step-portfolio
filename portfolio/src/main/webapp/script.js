@@ -148,7 +148,6 @@ function addResponseToDom(form) {
   const formContainer = document.getElementById('form-container');
   formContainer.innerText = form;
 }
-
 /** Creates a map and adds it to the page. */
 function createMap() {
   const map = new google.maps.Map(
@@ -161,3 +160,4 @@ function createMap() {
     title: 'My House'
   });
 }
+
