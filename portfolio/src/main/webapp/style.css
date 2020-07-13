@@ -77,8 +77,10 @@ button {
     margin: auto;
 }
 
- #map {
-     overflow: visible;
-     z-index: 10;
-     position: relative;
- }
+#map{
+    position: relative; 
+    overflow: auto;
+    z-index: 10; 
+    height: 400px; 
+    width: 400px;
+}

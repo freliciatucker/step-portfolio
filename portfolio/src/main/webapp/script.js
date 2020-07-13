@@ -152,7 +152,7 @@ function addResponseToDom(form) {
 function createMap() {
   const map = new google.maps.Map(
       document.getElementById('map'),
-      {center: {lat: 33.509, lng: -81.72}, zoom: 16});
+      {center: {lat: 33.509, lng: -81.72}, zoom: 8});
       
   const trexMarker = new google.maps.Marker({
     position: {lat: 33.509, lng: -81.72},
