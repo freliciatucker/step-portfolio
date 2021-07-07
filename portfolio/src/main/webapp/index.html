@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <title>Frelicia's Portfolio</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu5xY7doZ9aQJCtbNxztqvRxFub2i1rzU"></script>
     <link rel="stylesheet" href="style.css">
      <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
   </head> 
-  <body onload="getForm()">
+  <body onload="getForm(); createMap();"> 
     <div id="content">
 
     <h1>Frelicia Tucker's Portfolio</h1>
@@ -63,7 +64,7 @@
     <img src="images/tennis.jpg" alt="playing tennis"/>
        
 
-    <h3>Frelicia and Computer Science</h3>
+    <h2>Frelicia and Computer Science</h2>
       <p> I'm relatively new to the Computer Science world, but even so I've
           already learned so much! This is just a tast of a few of the projects
           I've completed:</p>
@@ -76,20 +77,28 @@
             <li>so many more!</li>
         </ul>
          
-        <p>You can check out some of my COS work on my 
+      <p>You can check out some of my COS work on my 
             <a href="https://github.com/freliciatucker">GitHub profile</a> 
             or look at my 
             <a href="https://www.linkedin.com/in/frelicia-t-3444bb146/">
             LinkedIn page</a> to research other things 
             I'm doing to grow professionally</p>
 
-        <h4> Fun Facts! </h4>
-          <p>Click below to learn a random fact about me!</p>
-          <button><a href="randomFact.html">Click Me!</a></button>
+    <h2> Fun Facts! </h2>
+      <p>Click below to learn a random fact about me!</p>
+      <button><a href="randomFact.html">Click Me!</a></button> 
 
-        <h5>Here's a chart showing some cool stuff</h5>
-        <div id="chart-container"></div>
+    <h2> see my threejs try </h2>
+      <button><a href="threejs.html">Click Me!</a></button> 
 
+    <h2>Here's a chart showing some cool stuff</h2>
+      <div id="chart-container"></div>
+
+    <h2>My map</h2>
+      <p>This map orginates over where I grew up, but feel free to move it to find
+            any other place on the globe! </p>
+        <div id='map'></div>
+              
     </div>
   </body>
   
